@@ -1,6 +1,11 @@
 package com.omarbadreldin.teldamoviestask.ui.listing
 
-import androidx.fragment.app.Fragment
-import com.omarbadreldin.teldamoviestask.R
+import com.omarbadreldin.base.fragment.BaseFragment
+import com.omarbadreldin.teldamoviestask.databinding.FragmentMoviesListingBinding
 
-class MoviesListingFragment : Fragment(R.layout.fragment_movies_listing)
+class MoviesListingFragment : BaseFragment<FragmentMoviesListingBinding>() {
+
+    override val bindingInflater: () -> FragmentMoviesListingBinding = {
+        FragmentMoviesListingBinding.inflate(layoutInflater)
+    }
+}
