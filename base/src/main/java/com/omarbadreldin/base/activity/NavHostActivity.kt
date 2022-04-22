@@ -21,8 +21,6 @@ abstract class NavHostActivity<BINDING : ViewBinding> : BaseActivity<BINDING>() 
         super.onCreate(savedInstanceState)
         navHostFragment = supportFragmentManager.findFragmentById(
             navHostFragmentId
-        ) as? NavHostFragment ?: throw RuntimeException(
-            message = MESSAGE_NAV_HOST_FRAGMENT_NOT_FOUND
-        )
+        ) as? NavHostFragment ?: throw IllegalStateException(MESSAGE_NAV_HOST_FRAGMENT_NOT_FOUND)
     }
 }
