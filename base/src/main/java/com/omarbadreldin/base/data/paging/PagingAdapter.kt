@@ -1,6 +1,10 @@
 package com.omarbadreldin.base.data.paging
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import com.omarbadreldin.base.recycler.*
+import com.omarbadreldin.base.recycler.common.EmptyViewHolder
 
 private const val TYPE_LIST_LOADING = 23948;
 private const val BEFORE_THRESHOLD_DEFAULT = 4
@@ -10,6 +14,7 @@ class PagingAdapter(
     viewHolderCreator: ViewHolderCreator<ListItem<*>>,
     private val beforeThreshold: Int = BEFORE_THRESHOLD_DEFAULT,
     private val onScrolledToEndListener: OnScrolledToEndListener,
+    @LayoutRes private val loadingLayoutRes: Int,
 ) : ListItemRecyclerAdapter(
     layoutResSupplier, viewHolderCreator
 ) {
@@ -34,5 +39,16 @@ class PagingAdapter(
         super.onBindViewHolder(holder, position)
         if (!isLoading && position == itemCount - beforeThreshold)
             onScrolledToEndListener.onScrolledToEnd()
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): BindingViewHolder<*, ListItem<*>> {
+        return if (viewType == TYPE_LIST_LOADING) LayoutInflater.from(parent.context).inflate(
+            loadingLayoutRes,
+            parent
+        ).let { EmptyViewHolder(it) }
+        else super.onCreateViewHolder(parent, viewType)
     }
 }
