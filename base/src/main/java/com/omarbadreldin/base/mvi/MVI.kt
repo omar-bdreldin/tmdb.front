@@ -4,16 +4,16 @@ import androidx.lifecycle.LiveData
 
 interface MVI {
 
-    interface View<I: Intent, M: Model<I>, S: State> {
+    interface View<I: Intent, S: State, M: Model<I, S>> {
 
         val viewModel: M
 
         fun render(state: S)
     }
 
-    interface Model<I: Intent> {
+    interface Model<I: Intent, S: State> {
 
-        val state: LiveData<State>
+        val state: LiveData<S>
 
         fun onIntent(intent: I)
     }
