@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class RecyclerAdapter<T, VH : BindingViewHolder<*, T>>(
-    private val items: MutableList<T> = mutableListOf(),
+    protected val items: MutableList<T> = mutableListOf(),
     private val layoutResSupplier: LayoutResSupplier,
     private val viewHolderCreator: ViewHolderCreator<T>,
 ) : RecyclerView.Adapter<VH>(),
