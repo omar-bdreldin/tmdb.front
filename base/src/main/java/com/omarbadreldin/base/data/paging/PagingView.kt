@@ -9,10 +9,18 @@ interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE 
 
     override fun render(state: S) {
         when (state) {
-            is PageLoaded<*> -> adapter.apply {
-                isLoading = false
-                appendAll(state.page.items)
-            }
+            is PageLoaded<*> -> onPageLoaded(state)
+            is ListLoading -> onListLoading(state)
+        }
+    }
+
+    fun onListLoading(state: ListLoading) {
+        adapter.isLoading = state.isLoading
+    }
+
+    fun onPageLoaded(state: PageLoaded<*>) {
+        adapter.apply {
+            appendAll(state.page.items)
         }
     }
 }
