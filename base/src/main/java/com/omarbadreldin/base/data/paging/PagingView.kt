@@ -11,7 +11,7 @@ interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE 
         when (state) {
             is PageLoaded<*> -> adapter.apply {
                 isLoading = false
-                appendAll(state.page.list)
+                appendAll(state.page.items)
             }
         }
     }
