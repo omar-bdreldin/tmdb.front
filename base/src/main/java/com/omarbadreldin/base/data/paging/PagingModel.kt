@@ -11,4 +11,6 @@ interface PagingModel<I: MVI.Intent, S: MVI.State> : MVI.Model<I, S> {
             }
         }
     }
+
+    fun reset()
 }
