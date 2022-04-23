@@ -2,15 +2,21 @@
     <!-- Base application theme. -->
     <style name="Theme.TeldaMoviesTask" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryVariant">@color/white</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/gray_171723</item>
+        <item name="colorPrimaryVariant">@color/gray_171723</item>
+        <item name="colorOnPrimary">@color/white_fefefe</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/black</item>
-        <item name="colorSecondaryVariant">@color/black</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondary">@color/green_4aa795</item>
+        <item name="colorSecondaryVariant">@color/green_4aa795</item>
+        <item name="colorOnSecondary">@color/white_fefefe</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:colorBackground">?attr/colorPrimary</item>
+        <item name="colorOnBackground">?attr/colorOnPrimary</item>
+        <item name="colorSurface">@color/gray_1f1e2e</item>
+        <item name="colorOnSurface">?attr/colorOnPrimary</item>
+        <item name="colorError">@android:color/holo_red_dark</item>
+        <item name="colorOnError">@color/white_fefefe</item>
     </style>
 </resources>
