@@ -24,9 +24,10 @@ data class IntParam(
     }
 }
 
-inline infix fun <reified T: Any> String.paramOf(value: T?): Param<T> {
-    return when (value) {
-        is Int? -> IntParam(key = this, value = value) as Param<T>
-        else -> AnyParam(key = this, value = value)
-    }
+infix fun <T : Any> String.paramOf(value: T?): Param<T> {
+    return AnyParam(key = this, value = value)
+}
+
+infix fun String.intParamOf(value: Int?): IntParam {
+    return IntParam(key = this, value = value)
 }
