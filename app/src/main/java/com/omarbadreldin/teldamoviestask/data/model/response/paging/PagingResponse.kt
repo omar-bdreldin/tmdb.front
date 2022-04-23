@@ -23,3 +23,7 @@ data class PagingResponse<T>(
 fun <T> PagingResponse<T>.hasReachedEnd(): Boolean {
     return page == totalPages
 }
+
+fun <T> PagingResponse<T>.isFirstPage(): Boolean {
+    return page == 1
+}

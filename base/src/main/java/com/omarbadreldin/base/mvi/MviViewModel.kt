@@ -9,4 +9,8 @@ abstract class MviViewModel<I : MVI.Intent, S : MVI.State> : ViewModel(), MVI.Mo
     protected val _state: MutableLiveData<S> = MutableLiveData<S>()
 
     override val state: LiveData<S> = _state
+
+    protected fun state(state: S) {
+        _state.value = state
+    }
 }

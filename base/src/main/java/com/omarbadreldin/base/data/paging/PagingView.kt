@@ -11,6 +11,7 @@ interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE 
     val recyclerView: RecyclerView
 
     override fun render(state: S) {
+        println("@omar: render(state = $state)")
         when (state) {
             is PageLoaded<*> -> onPageLoaded(state)
             is ListLoading -> onListLoading(state)
