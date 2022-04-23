@@ -4,4 +4,5 @@ import com.omarbadreldin.base.recycler.ListItem
 
 interface Page : RemotePage<ListItem<*>> {
     val isFirstPage: Boolean
+    val hasReachedEnd: Boolean
 }
