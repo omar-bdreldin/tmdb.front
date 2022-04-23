@@ -26,7 +26,7 @@ class PagingAdapter(
                 listOf(
                     ListItem(
                         type = TYPE_LIST_LOADING,
-                        data = Unit
+                        data = true
                     )
                 )
             )
