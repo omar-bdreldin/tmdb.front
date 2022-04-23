@@ -47,7 +47,8 @@ class PagingAdapter(
     ): BindingViewHolder<*, ListItem<*>> {
         return if (viewType == TYPE_LIST_LOADING) LayoutInflater.from(parent.context).inflate(
             loadingLayoutRes,
-            parent
+            parent,
+            false
         ).let { EmptyViewHolder(it) }
         else super.onCreateViewHolder(parent, viewType)
     }

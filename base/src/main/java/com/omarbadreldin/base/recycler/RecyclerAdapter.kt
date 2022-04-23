@@ -19,7 +19,8 @@ abstract class RecyclerAdapter<T, VH : BindingViewHolder<*, T>>(
             viewType,
             LayoutInflater.from(parent.context).inflate(
                 layoutResSupplier.getLayoutResForViewType(viewType),
-                parent
+                parent,
+                false
             )
         ) as VH
     }
