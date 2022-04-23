@@ -25,14 +25,14 @@ android {
         debug {
             applicationIdSuffix ".debug"
             buildConfigField 'String', 'TMDB_API_KEY', '"2ff13b9e8518892cba3d2c1e58229abc"'
-            buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/"'
+            buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3"'
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField 'String', 'TMDB_API_KEY', '"2ff13b9e8518892cba3d2c1e58229abc"'
-            buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/"'
+            buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3"'
         }
     }
 
