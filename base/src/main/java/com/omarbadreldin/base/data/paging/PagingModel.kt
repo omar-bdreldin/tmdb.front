@@ -7,10 +7,11 @@ interface PagingModel<I: MVI.Intent, S: MVI.State> : MVI.Model<I, S> {
     override fun onIntent(intent: I) {
         when (intent) {
             is LoadPage -> loadPage(intent)
+            is ResetPaging -> resetPaging(intent)
         }
     }
 
     fun loadPage(intent: LoadPage)
 
-    fun resetPaging()
+    fun resetPaging(intent: ResetPaging)
 }

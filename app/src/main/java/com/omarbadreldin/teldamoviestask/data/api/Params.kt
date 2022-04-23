@@ -6,5 +6,6 @@ object Params {
         const val PARAM_PAGE = "page"
         const val PARAM_PER_PAGE = "limit"
         const val PARAM_API_KEY = "api_key"
+        const val PARAM_QUERY = "query"
     }
 }

@@ -28,7 +28,7 @@ object NetworkModule {
                 json()
             }
             install(Logging) {
-                logger = Logger.DEFAULT
+                logger = Logger.ANDROID
                 level = LogLevel.ALL
             }
             install(HttpTimeout) {

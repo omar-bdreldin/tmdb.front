@@ -15,7 +15,12 @@ interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE 
         when (state) {
             is PageLoaded<*> -> onPageLoaded(state)
             is ListLoading -> onListLoading(state)
+            is ClearList -> onClearList(state)
         }
+    }
+
+    fun onClearList(state: ClearList) {
+        adapter.clearAll()
     }
 
     fun onListLoading(state: ListLoading) {
@@ -31,8 +36,6 @@ interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE 
     }
 
     fun startPaging() = onScrolledToEnd()
-
-    fun resetPaging() = viewModel.resetPaging()
 
     fun createAdapter(): PagingAdapter
 }

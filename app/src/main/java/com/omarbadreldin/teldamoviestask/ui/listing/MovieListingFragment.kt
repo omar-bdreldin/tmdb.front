@@ -1,7 +1,10 @@
 package com.omarbadreldin.teldamoviestask.ui.listing
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.omarbadreldin.base.data.paging.PagingAdapter
@@ -85,6 +88,32 @@ class MovieListingFragment :
     }
 
     override fun setupViews() {
+        setupRecyclerView()
+        setupSearchTextInput()
+    }
+
+    private fun setupSearchTextInput() {
+        binding.textInputEditTextSearch.apply {
+            addTextChangedListener(afterTextChanged = ::onSearchInputChange)
+            setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    viewModel.onIntent(
+                        MovieListingMVI.Intent.Search(binding.textInputEditTextSearch.text.toString())
+                    )
+                    true
+                } else false
+            }
+        }
+    }
+
+    private fun onSearchInputChange(searchInput: Editable?) {
+        if (searchInput.isNullOrEmpty()) {
+            viewModel.onIntent(MovieListingMVI.Intent.ResetPaging)
+            startPaging()
+        }
+    }
+
+    private fun setupRecyclerView() {
         binding.recyclerView.apply {
             adapter = this@MovieListingFragment.adapter
         }

@@ -11,3 +11,5 @@ interface PageLoaded<PAGE: Page> : MVI.State {
 }
 
 interface EmptyPageError : ErrorState
+
+interface ClearList : MVI.State

@@ -12,6 +12,12 @@ interface MovieListingMVI : MVI {
 
     sealed interface Intent : MVI.Intent {
         object LoadPage : Intent, com.omarbadreldin.base.data.paging.LoadPage
+
+        data class Search(
+            val searchQuery: String?
+        ) : Intent
+
+        object ResetPaging : Intent, com.omarbadreldin.base.data.paging.ResetPaging
     }
 
     sealed interface State : MVI.State {
@@ -25,6 +31,8 @@ interface MovieListingMVI : MVI {
         ) : State, com.omarbadreldin.base.data.paging.PageLoaded<Page>
 
         data class ListError(override val error: Throwable) : State, ErrorState
+
+        object ClearPages : State, ClearList
 
     }
 }
