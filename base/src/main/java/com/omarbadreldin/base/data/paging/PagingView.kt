@@ -1,11 +1,14 @@
 package com.omarbadreldin.base.data.paging
 
+import androidx.recyclerview.widget.RecyclerView
 import com.omarbadreldin.base.mvi.MVI
 
-interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE : Page>
-    : MVI.View<I, S, M>, OnScrolledToEndListener {
+interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE : Page> :
+    MVI.View<I, S, M>, OnScrolledToEndListener {
 
     val adapter: PagingAdapter
+
+    val recyclerView: RecyclerView
 
     override fun render(state: S) {
         when (state) {
@@ -15,7 +18,9 @@ interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE 
     }
 
     fun onListLoading(state: ListLoading) {
-        adapter.isLoading = state.isLoading
+        recyclerView.post {
+            adapter.isLoading = state.isLoading
+        }
     }
 
     fun onPageLoaded(state: PageLoaded<*>) {
@@ -23,4 +28,10 @@ interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE 
             appendAll(state.page.items)
         }
     }
+
+    fun startPaging() = onScrolledToEnd()
+
+    fun resetPaging() = viewModel.resetPaging()
+
+    fun createAdapter(): PagingAdapter
 }
