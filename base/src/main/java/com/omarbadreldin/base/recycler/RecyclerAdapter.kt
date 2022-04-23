@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class RecyclerAdapter<T, VH : BindingViewHolder<*, T>>(
     protected val items: MutableList<T> = mutableListOf(),
     private val layoutResSupplier: LayoutResSupplier,
-    private val viewHolderCreator: ViewHolderCreator<T>,
+    private val viewHolderCreator: ViewHolderCreator,
 ) : RecyclerView.Adapter<VH>(),
     RecyclerOps<T> {
 

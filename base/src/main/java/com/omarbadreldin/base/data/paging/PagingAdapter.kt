@@ -11,7 +11,7 @@ private const val BEFORE_THRESHOLD_DEFAULT = 4
 
 class PagingAdapter(
     layoutResSupplier: LayoutResSupplier,
-    viewHolderCreator: ViewHolderCreator<ListItem<*>>,
+    viewHolderCreator: ViewHolderCreator,
     private val beforeThreshold: Int = BEFORE_THRESHOLD_DEFAULT,
     private val onScrolledToEndListener: OnScrolledToEndListener,
     @LayoutRes private val loadingLayoutRes: Int,
