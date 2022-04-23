@@ -3,7 +3,9 @@ package com.omarbadreldin.teldamoviestask.ui.main
 import com.omarbadreldin.base.activity.NavHostActivity
 import com.omarbadreldin.teldamoviestask.R
 import com.omarbadreldin.teldamoviestask.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : NavHostActivity<ActivityMainBinding>() {
 
     override val bindingInflater: () -> ActivityMainBinding = {
