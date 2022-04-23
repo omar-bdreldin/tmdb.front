@@ -8,9 +8,13 @@ import com.omarbadreldin.base.data.paging.PagingAdapter
 import com.omarbadreldin.base.mvi.MviFragment
 import com.omarbadreldin.base.recycler.BindingViewHolder
 import com.omarbadreldin.base.recycler.LayoutResSupplier
+import com.omarbadreldin.base.recycler.ListItem
 import com.omarbadreldin.base.recycler.ViewHolderCreator
 import com.omarbadreldin.teldamoviestask.R
+import com.omarbadreldin.teldamoviestask.data.model.movie.Movie
 import com.omarbadreldin.teldamoviestask.databinding.FragmentMoviesListingBinding
+import com.omarbadreldin.teldamoviestask.databinding.ListItemMoviesHeaderBinding
+import com.omarbadreldin.teldamoviestask.ui.common.viewholder.TextItemViewHolder
 import com.omarbadreldin.teldamoviestask.ui.listing.viewholder.MovieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -52,7 +56,8 @@ class MovieListingFragment :
 
     override fun getLayoutResForViewType(viewType: Int): Int {
         return when (viewType) {
-            ViewTypes.TYPE_MOVIE -> R.layout.list_item_movie
+            ViewTypes.TYPE_POPULAR_MOVIE -> R.layout.list_item_movie
+            ViewTypes.TYPE_HEADER -> R.layout.list_item_movies_header
             else -> throw IllegalArgumentException()
         }
     }
@@ -62,9 +67,21 @@ class MovieListingFragment :
         view: View
     ): BindingViewHolder<*, *> {
         return when (viewType) {
-            ViewTypes.TYPE_MOVIE -> MovieViewHolder(view)
+            ViewTypes.TYPE_POPULAR_MOVIE -> MovieViewHolder(
+                itemView = view,
+                onMovieClick = ::onMovieClick
+            )
+            ViewTypes.TYPE_HEADER -> TextItemViewHolder(
+                itemView = view,
+                binder = ListItemMoviesHeaderBinding::bind,
+                textViewProvider = ListItemMoviesHeaderBinding::textView
+            )
             else -> throw IllegalArgumentException()
         }
+    }
+
+    private fun onMovieClick(item: ListItem<Movie>, position: Int) {
+
     }
 
     override fun setupViews() {
