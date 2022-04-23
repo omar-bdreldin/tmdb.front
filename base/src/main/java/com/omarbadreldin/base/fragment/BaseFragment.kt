@@ -28,4 +28,14 @@ abstract class BaseFragment<BINDING : ViewBinding> : Fragment() {
             it.root
         }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+        if (savedInstanceState == null) setup()
+    }
+
+    abstract fun setupViews()
+
+    abstract fun setup()
 }
