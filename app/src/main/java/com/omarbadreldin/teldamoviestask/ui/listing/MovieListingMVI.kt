@@ -2,6 +2,7 @@ package com.omarbadreldin.teldamoviestask.ui.listing
 
 import com.omarbadreldin.base.data.paging.*
 import com.omarbadreldin.base.mvi.MVI
+import com.omarbadreldin.base.mvi.common.ErrorState
 
 interface MovieListingMVI : MVI {
 
@@ -22,6 +23,8 @@ interface MovieListingMVI : MVI {
         data class PageLoaded(
             override val page: Page
         ) : State, com.omarbadreldin.base.data.paging.PageLoaded<Page>
+
+        data class ListError(override val error: Throwable) : State, ErrorState
 
     }
 }

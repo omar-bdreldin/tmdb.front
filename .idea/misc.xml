@@ -6,7 +6,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_movies_listing.xml" value="0.2550231839258114" />
         <entry key="app/src/main/res/layout/list_item_loading.xml" value="0.17222222222222222" />
-        <entry key="app/src/main/res/layout/list_item_movie.xml" value="1.667857142857143" />
+        <entry key="app/src/main/res/layout/list_item_movie.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/list_item_movies_header.xml" value="0.1515625" />
       </map>
     </option>
   </component>

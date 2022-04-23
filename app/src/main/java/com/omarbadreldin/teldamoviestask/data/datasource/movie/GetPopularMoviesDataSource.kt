@@ -22,11 +22,8 @@ class GetPopularMoviesDataSource @Inject constructor(
         return api.call(
             queryParams = listOf(
                 pagingKey,
-                perPageKey
             )
-        ).also {
-            println(it)
-        }.getOrThrow()
+        ).getOrThrow()
     }
 
     override fun reset() {
