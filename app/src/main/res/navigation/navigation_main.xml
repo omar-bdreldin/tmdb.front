@@ -6,5 +6,5 @@
 
     <fragment
         android:id="@+id/movies_listing_fragment"
-        android:name="com.omarbadreldin.teldamoviestask.ui.listing.MoviesListingFragment" />
+        android:name="com.omarbadreldin.teldamoviestask.ui.listing.MovieListingFragment" />
 </navigation>

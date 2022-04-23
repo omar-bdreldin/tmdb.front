@@ -5,7 +5,7 @@ import com.omarbadreldin.base.mvi.MVI
 
 interface MovieListingMVI : MVI {
 
-    interface View : PagingView<Intent, State, Model, Page>
+    interface View : PagingView<Intent, State, MovieListingViewModel, Page>
 
     interface Model : PagingModel<Intent, State>
 
