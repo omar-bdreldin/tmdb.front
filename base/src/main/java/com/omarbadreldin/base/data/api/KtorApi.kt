@@ -33,6 +33,7 @@ abstract class KtorApi<DATA> constructor(
                         newValue = param.valueString
                     )
                 }
+                append(modifiedUrl)
             }
 
             val response: HttpResponse = client.request(urlString = urlActual) {
