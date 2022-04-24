@@ -12,7 +12,9 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val movieDetailsUseCase: MovieDetailsUseCase
+    private val movieDetailsUseCase: MovieDetailsUseCase,
+    private val similarMoviesUseCase: SimilarMoviesUseCase,
+    private val movieCreditsUseCase: MovieCreditsUseCase,
 ) : MviViewModel<MovieDetailsMVI.Intent, MovieDetailsMVI.State>(), MovieDetailsMVI.Model {
 
     private val args: MovieDetailsFragmentArgs by lazy {
