@@ -1,3 +1,6 @@
 package com.omarbadreldin.base.usecase
 
-interface UseCase
+interface UseCase<P: Params, RESULT> {
+
+    suspend fun get(params: P): RESULT
+}

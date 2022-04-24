@@ -7,5 +7,6 @@ object Params {
         const val PARAM_PER_PAGE = "limit"
         const val PARAM_API_KEY = "api_key"
         const val PARAM_QUERY = "query"
+        const val PARAM_MOVIE_ID = "movie_id"
     }
 }
