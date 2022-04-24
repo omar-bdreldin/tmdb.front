@@ -18,6 +18,7 @@ import com.omarbadreldin.teldamoviestask.data.model.movie.Movie
 import com.omarbadreldin.teldamoviestask.databinding.FragmentMoviesListingBinding
 import com.omarbadreldin.teldamoviestask.databinding.ListItemMoviesHeaderBinding
 import com.omarbadreldin.teldamoviestask.ui.common.viewholder.TextItemViewHolder
+import com.omarbadreldin.teldamoviestask.ui.screen.moviedetails.MovieDetailsFragmentArgs
 import com.omarbadreldin.teldamoviestask.ui.screen.movielisting.viewholder.MovieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -84,7 +85,10 @@ class MovieListingFragment :
     }
 
     private fun onMovieClick(item: ListItem<Movie>, position: Int) {
-
+        navController.navigate(
+            R.id.action_movies_listing_fragment_to_movie_details_fragment,
+            MovieDetailsFragmentArgs(item.data).toBundle()
+        )
     }
 
     override fun setupViews() {

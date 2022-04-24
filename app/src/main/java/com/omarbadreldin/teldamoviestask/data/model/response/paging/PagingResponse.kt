@@ -17,7 +17,7 @@ data class PagingResponse<T>(
     val totalResults: Int,
 ) : RemotePage<T> {
 
-    override val items: List<T> = results ?: emptyList()
+    override val items: List<T> = results
 }
 
 fun <T> PagingResponse<T>.hasReachedEnd(): Boolean {
