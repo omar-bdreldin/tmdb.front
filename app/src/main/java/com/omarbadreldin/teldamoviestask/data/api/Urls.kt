@@ -7,4 +7,5 @@ object Urls {
     const val URL_MOVIES_POPULAR = "movie/popular"
     const val URL_MOVIES_SEARCH = "search/movie"
     const val URL_MOVIE_DETAILS = "movie/{$PARAM_MOVIE_ID}"
+    const val URL_SIMILAR_MOVIES = "movie/{$PARAM_MOVIE_ID}/similar"
 }
