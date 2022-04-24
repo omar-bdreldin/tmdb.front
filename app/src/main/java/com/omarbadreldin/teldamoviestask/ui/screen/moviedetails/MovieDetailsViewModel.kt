@@ -3,7 +3,7 @@ package com.omarbadreldin.teldamoviestask.ui.screen.moviedetails
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.omarbadreldin.base.mvi.MviViewModel
-import com.omarbadreldin.teldamoviestask.usecase.movie.details.MovieDetailsParams
+import com.omarbadreldin.teldamoviestask.usecase.movie.details.MovieIdParams
 import com.omarbadreldin.teldamoviestask.usecase.movie.details.MovieDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -26,7 +26,7 @@ class MovieDetailsViewModel @Inject constructor(
     private fun loadMovieDetails() {
         viewModelScope.launch {
             val movieDetails = movieDetailsUseCase.get(
-                MovieDetailsParams(args.movie.id ?: throw IllegalStateException())
+                MovieIdParams(args.movie.id ?: throw IllegalStateException())
             )
             state(MovieDetailsMVI.State.MovieDetailsLoaded(movieDetails))
         }

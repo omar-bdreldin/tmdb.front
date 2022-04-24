@@ -10,7 +10,7 @@ class MovieDetailsUseCaseImpl @Inject constructor(
     private val getMovieDetailsApi: GetMovieDetailsApi
 ) : MovieDetailsUseCase {
 
-    override suspend fun get(params: MovieDetailsParams): MovieDetails {
+    override suspend fun get(params: MovieIdParams): MovieDetails {
         return getMovieDetailsApi.call(
             pathParams = listOf(
                 Params.Keys.PARAM_MOVIE_ID paramOf params.movieId
