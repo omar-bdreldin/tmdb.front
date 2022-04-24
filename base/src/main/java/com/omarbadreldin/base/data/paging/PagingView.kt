@@ -25,7 +25,9 @@ interface PagingView<I : MVI.Intent, S : MVI.State, M : PagingModel<I, S>, PAGE 
 
     fun onListLoading(state: ListLoading) {
         recyclerView.post {
-            adapter.isLoading = state.isLoading
+            runCatching {
+                this@PagingView.adapter.isLoading = state.isLoading
+            }
         }
     }
 
