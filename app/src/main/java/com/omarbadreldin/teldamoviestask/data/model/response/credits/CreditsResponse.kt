@@ -1,6 +1,8 @@
-package com.omarbadreldin.teldamoviestask.data.model.credits
+package com.omarbadreldin.teldamoviestask.data.model.response.credits
 
 
+import com.omarbadreldin.teldamoviestask.data.model.credits.Cast
+import com.omarbadreldin.teldamoviestask.data.model.credits.Crew
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
