@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.omarbadreldin.base.mvi.MviViewModel
 import com.omarbadreldin.teldamoviestask.usecase.movie.details.MovieIdParams
 import com.omarbadreldin.teldamoviestask.usecase.movie.details.MovieDetailsUseCase
+import com.omarbadreldin.teldamoviestask.usecase.movie.similar.SimilarMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -27,10 +28,18 @@ class MovieDetailsViewModel @Inject constructor(
 
     private fun loadMovieDetails() {
         viewModelScope.launch {
-            val movieDetails = movieDetailsUseCase.get(
-                MovieIdParams(args.movie.id ?: throw IllegalStateException())
-            )
+            state(MovieDetailsMVI.State.Loading(true))
+            val movieIdParams = MovieIdParams(args.movie.id ?: throw IllegalStateException())
+            // get movie details (1st section)
+            val movieDetails = movieDetailsUseCase.get(movieIdParams)
             state(MovieDetailsMVI.State.MovieDetailsLoaded(movieDetails))
+
+            // get similar movies
+            val similarMovies = similarMoviesUseCase.get(movieIdParams)
+            state(MovieDetailsMVI.State.SimilarMoviesLoaded(similarMovies))
+
+
+            state(MovieDetailsMVI.State.Loading(true))
         }
     }
 
