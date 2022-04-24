@@ -4,7 +4,7 @@ import androidx.core.os.bundleOf
 import com.omarbadreldin.base.BuildConfig
 
 data class ListItem<out T>(
-    val type: Int,
+    val type: Int = 0,
     val data: T,
 ) {
 

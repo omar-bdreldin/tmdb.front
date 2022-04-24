@@ -21,5 +21,8 @@
         <argument
             android:name="movie"
             app:argType="com.omarbadreldin.teldamoviestask.data.model.movie.Movie" />
+        <action
+            android:id="@+id/action_movie_details_fragment_self"
+            app:destination="@id/movie_details_fragment" />
     </fragment>
 </navigation>

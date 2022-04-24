@@ -1,6 +1,7 @@
 package com.omarbadreldin.teldamoviestask.data.datasource.movie
 
 import com.omarbadreldin.base.data.model.intParamOf
+import com.omarbadreldin.base.data.model.paramOf
 import com.omarbadreldin.base.data.paging.BasePagingDataSource
 import com.omarbadreldin.teldamoviestask.data.api.Params
 import com.omarbadreldin.teldamoviestask.data.api.movie.GetPopularMoviesApi
@@ -22,6 +23,7 @@ class PopularMoviesDataSource @Inject constructor(
         return api.call(
             queryParams = listOf(
                 pagingKey,
+                Params.Keys.PARAM_ADULT paramOf false,
             )
         ).getOrThrow()
     }

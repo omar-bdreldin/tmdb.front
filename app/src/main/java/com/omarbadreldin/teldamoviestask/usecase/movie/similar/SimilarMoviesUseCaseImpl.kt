@@ -16,7 +16,8 @@ class SimilarMoviesUseCaseImpl @Inject constructor(
     override suspend fun get(params: MovieIdParams): List<Movie> {
         return getSimilarMoviesApi.call(
             pathParams = listOf(
-                Params.Keys.PARAM_MOVIE_ID paramOf params.movieId
+                Params.Keys.PARAM_MOVIE_ID paramOf params.movieId,
+                Params.Keys.PARAM_ADULT paramOf false,
             )
         ).getOrThrow().results.take(LIMIT_SIMILAR_MOVIES)
     }

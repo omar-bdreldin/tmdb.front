@@ -1,10 +1,13 @@
 package com.omarbadreldin.teldamoviestask.data.model.movie.details
 
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+@Parcelize
 data class MovieDetails(
     @SerialName("adult")
     val adult: Boolean? = null,
@@ -56,4 +59,4 @@ data class MovieDetails(
     val voteAverage: Double? = null,
     @SerialName("vote_count")
     val voteCount: Int? = null
-)
+) : Parcelable

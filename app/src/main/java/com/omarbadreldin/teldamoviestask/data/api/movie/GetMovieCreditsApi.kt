@@ -9,6 +9,6 @@ import javax.inject.Inject
 
 class GetMovieCreditsApi @Inject constructor(client: HttpClient) : KtorApi<Credits>(
     client = client,
-    url = Urls.URL_MOVIE_DETAILS,
+    url = Urls.URL_MOVIE_CREDITS,
     typeInfo = typeInfo<Credits>()
 )

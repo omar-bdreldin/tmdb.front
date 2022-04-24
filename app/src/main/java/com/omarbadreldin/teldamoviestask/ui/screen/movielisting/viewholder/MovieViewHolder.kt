@@ -6,6 +6,7 @@ import com.omarbadreldin.base.recycler.BindingViewHolder
 import com.omarbadreldin.base.recycler.ItemAction
 import com.omarbadreldin.base.recycler.ListItem
 import com.omarbadreldin.teldamoviestask.data.api.Urls
+import com.omarbadreldin.teldamoviestask.data.api.prependBaseMediaUrl
 import com.omarbadreldin.teldamoviestask.data.model.movie.Movie
 import com.omarbadreldin.teldamoviestask.databinding.ListItemMovieBinding
 import com.omarbadreldin.teldamoviestask.util.ui.extension.clicksTo
@@ -25,7 +26,7 @@ class MovieViewHolder(
                 textViewTitle.text = "$title"
                 textViewOverview.text = "$overview"
                 imageViewMoviesPoster.load(
-                    "${Urls.BASE_MEDIA_URL}/w500$posterPath"
+                    posterPath?.prependBaseMediaUrl()
                 ) {
                     crossfade(true)
                 }

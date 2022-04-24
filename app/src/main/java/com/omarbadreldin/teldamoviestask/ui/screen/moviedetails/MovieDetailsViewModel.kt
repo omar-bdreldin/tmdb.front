@@ -9,9 +9,12 @@ import com.omarbadreldin.teldamoviestask.usecase.movie.details.MovieIdParams
 import com.omarbadreldin.teldamoviestask.usecase.movie.details.MovieDetailsUseCase
 import com.omarbadreldin.teldamoviestask.usecase.movie.similar.SimilarMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 private const val LIMIT_CAST = 5
 
@@ -32,16 +35,22 @@ class MovieDetailsViewModel @Inject constructor(
     }
 
     private fun loadMovieDetails() {
-        viewModelScope.launch {
-            state(MovieDetailsMVI.State.Loading(true))
+        viewModelScope.launch(Dispatchers.IO) {
+            withContext(Dispatchers.Main) {
+                state(MovieDetailsMVI.State.Loading(true))
+            }
             val movieIdParams = MovieIdParams(args.movie.id ?: throw IllegalStateException())
             // get movie details (1st section)
             val movieDetails = movieDetailsUseCase.get(movieIdParams)
-            state(MovieDetailsMVI.State.MovieDetailsLoaded(movieDetails))
+            withContext(Dispatchers.Main) {
+                state(MovieDetailsMVI.State.MovieDetailsLoaded(movieDetails))
+            }
 
             // get similar movies
             val similarMovies = similarMoviesUseCase.get(movieIdParams)
-            state(MovieDetailsMVI.State.SimilarMoviesLoaded(similarMovies))
+            withContext(Dispatchers.Main) {
+                state(MovieDetailsMVI.State.SimilarMoviesLoaded(similarMovies))
+            }
 
             // get cast of all similar movies
             val allCasts = similarMovies.asSequence().map {
@@ -50,16 +59,20 @@ class MovieDetailsViewModel @Inject constructor(
                         MovieIdParams(it.id ?: throw IllegalStateException())
                     ).cast ?: emptyList()
                 }
-            }.flatMap { it }
+            }.flatten()
             val castGroupedByDepartment = allCasts.asSequence()
                 .groupBy { it.knownForDepartment?.lowercase() }
             val actors = castGroupedByDepartment.getOrElse(Departments.ACTING) { emptyList() }
                 .asSequence().sortedByDescending { it.popularity }.take(LIMIT_CAST).toList()
             val directors = castGroupedByDepartment.getOrElse(Departments.DIRECTING) { emptyList() }
                 .asSequence().sortedByDescending { it.popularity }.take(LIMIT_CAST).toList()
-            state(MovieDetailsMVI.State.CastLoaded(actor = actors, directors = directors))
+            withContext(Dispatchers.Main) {
+                state(MovieDetailsMVI.State.CastLoaded(actor = actors, directors = directors))
+            }
 
-            state(MovieDetailsMVI.State.Loading(false))
+            withContext(Dispatchers.Main) {
+                state(MovieDetailsMVI.State.Loading(false))
+            }
         }
     }
 

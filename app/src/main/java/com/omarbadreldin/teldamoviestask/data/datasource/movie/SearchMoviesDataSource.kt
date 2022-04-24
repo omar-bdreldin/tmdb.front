@@ -24,7 +24,8 @@ class SearchMoviesDataSource @Inject constructor(
         return api.call(
             queryParams = listOf(
                 pagingKey,
-                Params.Keys.PARAM_QUERY paramOf query
+                Params.Keys.PARAM_QUERY paramOf query,
+                Params.Keys.PARAM_ADULT paramOf false,
             )
         ).getOrThrow()
     }

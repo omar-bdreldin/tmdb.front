@@ -1,10 +1,13 @@
 package com.omarbadreldin.teldamoviestask.data.model.credits
 
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+@Parcelize
 data class Cast(
     @SerialName("adult")
     val adult: Boolean? = null,
@@ -30,4 +33,4 @@ data class Cast(
     val popularity: Double? = null,
     @SerialName("profile_path")
     val profilePath: String? = null
-)
+) : Parcelable
