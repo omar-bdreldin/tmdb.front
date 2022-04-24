@@ -6,5 +6,5 @@ object Urls {
     const val BASE_MEDIA_URL = "https://image.tmdb.org/t/p"
     const val URL_MOVIES_POPULAR = "movie/popular"
     const val URL_MOVIES_SEARCH = "search/movie"
-    const val URL_MOVIE_DETAILS = "/movie/{$PARAM_MOVIE_ID}"
+    const val URL_MOVIE_DETAILS = "movie/{$PARAM_MOVIE_ID}"
 }
