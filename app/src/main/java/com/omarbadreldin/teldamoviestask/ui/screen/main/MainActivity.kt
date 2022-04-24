@@ -1,4 +1,4 @@
-package com.omarbadreldin.teldamoviestask.ui.main
+package com.omarbadreldin.teldamoviestask.ui.screen.main
 
 import com.omarbadreldin.base.activity.NavHostActivity
 import com.omarbadreldin.teldamoviestask.R

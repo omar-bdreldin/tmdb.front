@@ -1,4 +1,4 @@
-package com.omarbadreldin.teldamoviestask.ui.listing
+package com.omarbadreldin.teldamoviestask.ui.screen.movielisting
 
 object ViewTypes {
     const val TYPE_POPULAR_MOVIE = 12

@@ -1,4 +1,4 @@
-package com.omarbadreldin.teldamoviestask.ui.listing
+package com.omarbadreldin.teldamoviestask.ui.screen.movielisting
 
 import com.omarbadreldin.base.data.paging.*
 import com.omarbadreldin.base.mvi.MVI

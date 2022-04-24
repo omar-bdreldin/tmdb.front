@@ -1,4 +1,4 @@
-package com.omarbadreldin.teldamoviestask.ui.listing
+package com.omarbadreldin.teldamoviestask.ui.screen.movielisting
 
 import androidx.lifecycle.viewModelScope
 import com.omarbadreldin.base.data.paging.LoadPage

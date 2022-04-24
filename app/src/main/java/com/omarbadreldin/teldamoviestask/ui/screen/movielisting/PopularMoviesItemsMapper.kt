@@ -1,4 +1,4 @@
-package com.omarbadreldin.teldamoviestask.ui.listing
+package com.omarbadreldin.teldamoviestask.ui.screen.movielisting
 
 import android.content.res.Resources
 import com.omarbadreldin.base.recycler.ListItem
