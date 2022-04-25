@@ -15,8 +15,10 @@
         <item name="android:colorBackground">?attr/colorPrimary</item>
         <item name="colorOnBackground">?attr/colorOnPrimary</item>
         <item name="colorSurface">@color/gray_1f1e2e</item>
-        <item name="colorOnSurface">?attr/colorOnPrimary</item>
+        <item name="colorOnSurface">@color/white_fefefe</item>
         <item name="colorError">@android:color/holo_red_dark</item>
         <item name="colorOnError">@color/white_fefefe</item>
+        <item name="android:colorControlActivated">?attr/colorOnPrimary</item>
+        <item name="android:colorControlHighlight">?attr/colorOnPrimary</item>
     </style>
 </resources>
