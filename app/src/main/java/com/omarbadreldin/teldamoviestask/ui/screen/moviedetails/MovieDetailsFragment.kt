@@ -30,7 +30,6 @@ class MovieDetailsFragment :
     }
 
     override fun render(state: MovieDetailsMVI.State) {
-        println(state)
         when (state) {
             is MovieDetailsMVI.State.Loading -> {
                 binding.loading.visibility = if (state.isLoading) VISIBLE else GONE
