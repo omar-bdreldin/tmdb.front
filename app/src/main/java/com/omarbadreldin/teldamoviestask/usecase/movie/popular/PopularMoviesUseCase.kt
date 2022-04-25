@@ -22,7 +22,7 @@ class PopularMoviesUseCase @Inject constructor(
 
     override suspend fun getActual(params: EmptyParams): PagingResponse<Movie> {
         return api.call(
-            queryParams = listOf(perPageKey)
+            queryParams = listOf(pagingKey)
         ).getOrThrow()
     }
 
