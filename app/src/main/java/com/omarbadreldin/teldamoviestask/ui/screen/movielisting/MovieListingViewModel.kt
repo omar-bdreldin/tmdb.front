@@ -65,17 +65,22 @@ class MovieListingViewModel @Inject constructor(
             }
 
             val pageState = data.getOrNull()?.run {
-                MovieListingMVI.State.PageLoaded(
+                if (items.isNullOrEmpty()) MovieListingMVI.State.EmptyPage("$query")
+                else MovieListingMVI.State.PageLoaded(
                     Page(
-                        items = items.map { ListItem(type = ViewTypes.TYPE_POPULAR_MOVIE, data = it) }
-                            .let {
-                                 if (query.isNullOrEmpty() && isFirstPage())
-                                     listOf(
-                                         ListItem(
-                                             ViewTypes.TYPE_HEADER,
-                                             resources.getString(R.string.label_popular_movies_header)
-                                         )
-                                     ) + it
+                        items = items.map {
+                            ListItem(
+                                type = ViewTypes.TYPE_POPULAR_MOVIE,
+                                data = it
+                            )
+                        }.let {
+                                if (query.isNullOrEmpty() && isFirstPage())
+                                    listOf(
+                                        ListItem(
+                                            ViewTypes.TYPE_HEADER,
+                                            resources.getString(R.string.label_popular_movies_header)
+                                        )
+                                    ) + it
                                 else it
                             },
                         hasReachedEnd = hasReachedEnd(),

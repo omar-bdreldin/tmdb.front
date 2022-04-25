@@ -3,10 +3,13 @@ package com.omarbadreldin.teldamoviestask.ui.screen.movielisting
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.inputmethod.EditorInfo
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.omarbadreldin.base.data.paging.ClearList
 import com.omarbadreldin.base.data.paging.PagingAdapter
 import com.omarbadreldin.base.mvi.MviFragment
 import com.omarbadreldin.base.mvi.common.ErrorState
@@ -132,7 +135,20 @@ class MovieListingFragment :
     override fun render(state: MovieListingMVI.State) {
         when (state) {
             is ErrorState -> state.showDialog(requireContext())
+            is MovieListingMVI.State.EmptyPage -> onEmptyPage(state)
             else -> super.render(state)
         }
+    }
+
+    private fun onEmptyPage(state: MovieListingMVI.State.EmptyPage) {
+        binding.layoutEmptyPage.apply {
+            textView.text = getString(R.string.label_no_result_are_found, state.keyword)
+            root.visibility = VISIBLE
+        }
+    }
+
+    override fun onClearList(state: ClearList) {
+        super.onClearList(state)
+        binding.layoutEmptyPage.root.visibility = GONE
     }
 }

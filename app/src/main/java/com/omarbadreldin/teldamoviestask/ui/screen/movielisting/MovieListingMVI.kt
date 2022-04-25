@@ -30,6 +30,8 @@ interface MovieListingMVI : MVI {
             override val page: Page
         ) : State, com.omarbadreldin.base.data.paging.PageLoaded<Page>
 
+        data class EmptyPage(val keyword: String) : State
+
         data class ListError(override val error: Throwable) : State, ErrorState
 
         object ClearPages : State, ClearList
