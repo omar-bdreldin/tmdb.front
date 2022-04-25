@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.omarbadreldin.base.data.paging.PagingAdapter
 import com.omarbadreldin.base.mvi.MviFragment
+import com.omarbadreldin.base.mvi.common.ErrorState
 import com.omarbadreldin.base.recycler.BindingViewHolder
 import com.omarbadreldin.base.recycler.LayoutResSupplier
 import com.omarbadreldin.base.recycler.ListItem
@@ -18,6 +19,7 @@ import com.omarbadreldin.teldamoviestask.data.model.movie.Movie
 import com.omarbadreldin.teldamoviestask.databinding.FragmentMoviesListingBinding
 import com.omarbadreldin.teldamoviestask.databinding.ListItemMoviesHeaderBinding
 import com.omarbadreldin.teldamoviestask.ui.common.viewholder.TextItemViewHolder
+import com.omarbadreldin.teldamoviestask.ui.dialog.showDialog
 import com.omarbadreldin.teldamoviestask.ui.screen.moviedetails.MovieDetailsFragmentArgs
 import com.omarbadreldin.teldamoviestask.ui.screen.movielisting.viewholder.MovieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
@@ -125,5 +127,12 @@ class MovieListingFragment :
 
     override fun setup() {
         startPaging()
+    }
+
+    override fun render(state: MovieListingMVI.State) {
+        when (state) {
+            is ErrorState -> state.showDialog(requireContext())
+            else -> super.render(state)
+        }
     }
 }
