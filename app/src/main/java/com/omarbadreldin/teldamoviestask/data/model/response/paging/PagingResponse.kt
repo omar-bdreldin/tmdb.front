@@ -15,9 +15,12 @@ data class PagingResponse<T>(
     val totalPages: Int,
     @SerialName("total_results")
     val totalResults: Int,
-) : RemotePage<T> {
+) : RemotePage<T, Int> {
 
     override val items: List<T> = results
+
+    override val pagingKey: Int
+        get() = page
 }
 
 fun <T> PagingResponse<T>.hasReachedEnd(): Boolean {

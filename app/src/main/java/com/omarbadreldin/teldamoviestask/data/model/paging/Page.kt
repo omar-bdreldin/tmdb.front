@@ -7,4 +7,5 @@ data class Page(
     override val isFirstPage: Boolean = false,
     override val hasReachedEnd: Boolean = false,
     override val items: List<ListItem<*>> = emptyList(),
+    override val pagingKey: Int,
 ) : Page
