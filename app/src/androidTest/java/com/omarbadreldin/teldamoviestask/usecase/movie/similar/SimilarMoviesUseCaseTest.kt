@@ -1,4 +1,4 @@
-package com.omarbadreldin.teldamoviestask.usecase
+package com.omarbadreldin.teldamoviestask.usecase.movie.similar
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.omarbadreldin.teldamoviestask.usecase.movie.details.MovieIdParams
