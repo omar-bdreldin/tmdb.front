@@ -26,4 +26,5 @@ fun FragmentMovieDetailsBinding.bindSimilarMoviesCast(state: MovieDetailsMVI.Sta
         recyclerView.adapter = adapter
         adapter.appendAll(cast.map { ListItem(data = it) })
     }
+    if (state.directors.isNotEmpty()) separator.visibility = VISIBLE
 }
