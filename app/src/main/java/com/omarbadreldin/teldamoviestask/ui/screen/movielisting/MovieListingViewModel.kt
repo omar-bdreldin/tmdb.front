@@ -40,9 +40,9 @@ class MovieListingViewModel @Inject constructor(
         when {
             searchQuery.isNullOrEmpty() && intent.searchQuery.isNullOrEmpty() -> TODO("show validation error")
             searchQuery != intent.searchQuery -> {
-                resetPaging(MovieListingMVI.Intent.ResetPaging)
+                onIntent(MovieListingMVI.Intent.ResetPaging)
                 searchQuery = intent.searchQuery
-                loadPage(MovieListingMVI.Intent.LoadPage)
+                onIntent(MovieListingMVI.Intent.LoadPage)
             }
         }
     }

@@ -103,7 +103,7 @@ class MovieListingFragment :
 
     private fun setupSearchTextInput() {
         binding.textInputEditTextSearch.apply {
-            addTextChangedListener(afterTextChanged = ::onSearchInputChange)
+//            addTextChangedListener(afterTextChanged = ::onSearchInputChange)
             setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     viewModel.onIntent(
@@ -112,6 +112,11 @@ class MovieListingFragment :
                     true
                 } else false
             }
+        }
+        binding.textInputLayoutSearch.setEndIconOnClickListener {
+            binding.textInputEditTextSearch.setText("")
+            viewModel.onIntent(MovieListingMVI.Intent.ResetPaging)
+            startPaging()
         }
     }
 
@@ -133,6 +138,7 @@ class MovieListingFragment :
     }
 
     override fun render(state: MovieListingMVI.State) {
+        println("@omar: $state")
         when (state) {
             is ErrorState -> state.showDialog(requireContext())
             is MovieListingMVI.State.EmptyPage -> onEmptyPage(state)
